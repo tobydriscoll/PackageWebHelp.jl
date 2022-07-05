@@ -5,7 +5,7 @@ using HTTP
 using JSON
 using DefaultApplication
 
-export help
+export help,package_help
 
 # Define the ModuleInfo type:
 include("module_info.jl")
@@ -68,16 +68,27 @@ end
     help(module_name)
     help(module_name,timeout=nsec)
 
-Attempt to open the default web browser to documentation for the package `module_name`, which 
-is either a Symbol or a String. If the package is a dependency of the active project, the 
-documentation for the active version is shown if known; otherwise, the function looks for 
-the latest/stable version. If no documentation location is known, the repository page from the 
-registry is opened.
+Attempt to open the default web browser to documentation for the package `module_name`, which is either a Symbol or a String. If the package is a dependency of the active project, the documentation for the active version is shown if known; otherwise, the function looks for the latest/stable version. If no documentation location is known, the repository page from the registry is opened.
 
-If the `timeout=` argument is given, it defines the timeout in 
-seconds used before giving up on a particular URL.
+If the `timeout=` argument is given, it defines the timeout in seconds used before giving up on a particular URL.
+
+# Examples
+```julia-repl
+julia> help("DataFrames")
+┌ Warning: Module DataFrames is not a project dependency; opening to latest version
+└ @ PackageWebHelp ~/Dropbox/julia/PackageWebHelp/src/PackageWebHelp.jl:40
+Process(`open https://dataframes.juliadata.org/stable/`, ProcessRunning)
+```
+
+```julia-repl
+julia> help("Julia")
+┌ Warning: Module Julia is not a project dependency; opening to latest version
+└ @ PackageWebHelp ~/Dropbox/julia/PackageWebHelp/src/PackageWebHelp.jl:40
+Process(`open https://docs.julialang.org/en/v1/`, ProcessRunning)
+```
 """
 help(s::String;kwargs...) = DefaultApplication.open(get_url(s;kwargs...))
 help(m::Union{Symbol,Module};kwargs...) = help(string(m);kwargs...)
+const package_help = help
 
 end # module
