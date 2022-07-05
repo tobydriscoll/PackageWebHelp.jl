@@ -1,0 +1,12 @@
+name = "PackageWebHelp"
+uuid = "708ddaec-77f7-45eb-a2f4-cd0b8b575a99"
+authors = ["Toby Driscoll <driscoll@udel.edu>"]
+version = "0.1.0"
+
+[deps]
+DefaultApplication = "3f0dd361-4fe0-5fc6-8523-80b14ec94d85"
+EzXML = "8f5d6c58-4d21-5cfd-889c-e3ad7ee6a615"
+HTTP = "cd3eb016-35fb-5094-929b-558a96fad6f3"
+JSON = "682c06a0-de6a-54ab-a142-c8b1cf79cde6"
+Pkg = "44cfe95a-1eb2-52ea-b672-e2afdf69b78f"
+TOML = "fa267f1f-6049-4f14-aa54-33bafae1ed76"
